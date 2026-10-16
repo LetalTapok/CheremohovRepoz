@@ -4,7 +4,7 @@ using System.IO;
 
 namespace sem_1_lab_03_report_generator
 {
-    internal class Program
+    public class Program
     {
         public static string BuildReport(string[] lines)
         {

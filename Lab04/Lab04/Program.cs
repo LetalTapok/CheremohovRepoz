@@ -28,19 +28,16 @@ namespace sem_1_lab_04_event_log
 
                 LogEntry entry = new LogEntry();
 
-                // первые 23 символа это дата и время
-                entry.Timestamp = DateTime.ParseExact(
-                    line.Substring(0, 23),
-                    "yyyy-MM-dd HH:mm:ss.fff",
-                    CultureInfo.InvariantCulture);
+                entry.Timestamp = DateTime.Parse(line.Substring(0, 23));
 
-                // первая пара скобок это уровень
+                //уровень
                 int firstOpenBracket = line.IndexOf('[');
                 int firstCloseBracket = line.IndexOf(']', firstOpenBracket);
 
-                // вторая пара скобок это категория
+                //категория
                 int secondOpenBracket = line.IndexOf('[', firstCloseBracket);
                 int secondCloseBracket = line.IndexOf(']', secondOpenBracket);
+
 
                 entry.Level = line.Substring(firstOpenBracket + 1, firstCloseBracket - firstOpenBracket - 1);
                 entry.Category = line.Substring(secondOpenBracket + 1, secondCloseBracket - secondOpenBracket - 1);
